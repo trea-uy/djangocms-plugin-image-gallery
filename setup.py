@@ -2,8 +2,8 @@ from setuptools import setup
 import os
 
 setup(
-    name = "image_gallery",
-    packages = ['image_gallery',],
+    name = "image_gallerys",
+    packages = ['image_gallerys',],
 
     package_data = {
         '': [

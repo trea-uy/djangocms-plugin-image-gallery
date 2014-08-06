@@ -1,0 +1,49 @@
+{% load sekizai_tags %}
+
+{% addtoblock "css" %}
+ <style>
+    .row-centered {
+        text-align: center;
+    }
+
+    .col-centered:nth-child(odd) {
+    background: #eeead4;
+    }
+
+    .col-centered {
+        display: inline-table;
+        float: none !important;
+        margin-right: -4px;
+    }
+
+    .text-box {
+        padding: 25% 10px 50px 10px;        
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 140px;
+        text-shadow: 4px 4px 15px rgba(0, 0, 0, 1) !important;
+    }
+
+    .caption {
+        padding: 25px;
+        text-align: justify !important;
+        min-height: 60px;
+    }
+</style>
+{% endaddtoblock%}
+
+<div class="row row-centered">
+      {% for item in instance.galleryitem_set.all %}
+        <div class="col-md-4 col-centered" style="position: relative;">
+            <img class="img-responsive" src="{{ item.image.url }}" style="margin: 0 auto;">
+            <div class="text-box">          
+                <a href="{{ item.link.get_absolute_url }}"><h1>{{item.link_text|upper}}</h1></a>
+                <div class="line"></div>
+            </div>
+            <div class="caption">
+                {{item.caption_content|safe}}   
+            </div>    
+        </div>  
+      {% endfor %}
+</div>
